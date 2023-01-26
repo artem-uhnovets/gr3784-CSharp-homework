@@ -19,7 +19,6 @@ else {digitB = (b-b%(MathF.Pow(10,(b.ToString().Length-3))))/MathF.Pow(10,(b.ToS
 if (c<100) Console.WriteLine($"{c} не 3-х значное число, третьей цифры нет");
 else {digitC = (c-c%(MathF.Pow(10,(c.ToString().Length-3))))/MathF.Pow(10,(c.ToString().Length-3))%10;
       Console.WriteLine($"У числа {c} третьей цифрой является {digitC}");}
-
 // MathF.Pow(x,y) метод возводит x в степень y, преобразует в тип float
 
 
