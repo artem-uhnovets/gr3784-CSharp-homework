@@ -16,14 +16,21 @@ Console.Clear();
 
 void CrossLines(float b1, float k1, float b2, float k2)
 {
-    float numX = (b2 - b1) / (k1 - k2);
-    float numY1 = k1 * numX + b1;
-    float numY2 = k2 * numX + b2;
-    if (numY1 == numY2)
+    if (k1 == k2)
     {
-        Console.WriteLine($"({numX}; {numY1})");
+        Console.WriteLine("Lines don't cross.");
     }
-    else Console.WriteLine("Lines don't cross.");
+    else 
+    {
+        float numX = (b2 - b1) / (k1 - k2);
+        float numY1 = k1 * numX + b1;
+        float numY2 = k2 * numX + b2;
+        if (numY1 == numY2)
+        {
+            Console.WriteLine($"({numX}; {numY1})");
+        }
+        else Console.WriteLine("Lines don't cross.");
+    }
 }
 
 int GetNum(string text)
@@ -39,3 +46,11 @@ float numberB2 = GetNum("Введите число B2 - ");
 float numberK2 = GetNum("Введите число K2 - ");
 Console.Write($"b1 = {numberB1}, k1 = {numberK1}, b2 = {numberB2}, k2 = {numberK2} -> ");
 CrossLines(numberB1, numberK1, numberB2, numberK2);
+
+// Комментарии после проверки
+// Ваше условие непересечения прямых неверное.
+// Прямые не пересекаются, когда у них угол наклона один и тот же, то есть равные коэффициенты k - угловые коэффициенты.
+// По сути k - это тангенс угла наклона. 
+// А если еще и коэффициенты b между собой равны, то прямые будут разумеется совпадать.
+// Поэтому в Вашем коде при равенстве k, производится деление на 0, и значения y будут равны.
+// Их значение будет равно "не число" (?, NA в зависимости от среды и ее версии). Никогда Ваша программа не сообщит, что прямые не пересекаются.

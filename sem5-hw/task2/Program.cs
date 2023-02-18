@@ -4,28 +4,47 @@
 // [3, 7, 23, 12] -> 19
 // [-4, -6, 89, 6] -> 0
 
+// Комментарии после проверки
+// Задачу 36 можно было решить короче:)
+// Присвоить сразу счетчику значение 1 и идти по циклу с шагом 2,
+// складывая с суммой значения элементов. 
+// Тогда можно было не использовать условие внутри цикла. И сократить количество итераций вдвое.
+
+// Запись типа number = number + value имеет короткую запись: number += value.
+// Аналогично это работает для всех арифметических действий. Пользуйтесь на здоровье)
+
 Console.Clear();
+
+// int OddSumm(int[] array)
+// {
+//     int result = 0;
+//     for (int index = 0; index < array.Length; index++)
+//     {
+//         if (index % 2 != 0)
+//         {
+//             result = result + array[index];
+//         }
+//     }
+//     return result;
+// }
 
 int OddSumm(int[] array)
 {
     int result = 0;
-    for (int index = 0; index < array.Length; index++)
+    for (int index = 1; index < array.Length; index=index+2)
     {
-        if (index % 2 != 0)
-        {
-            result = result + array[index];
-        }
+        result = result + array[index];
     }
     return result;
 }
 
 void PrintArray(int[] array)
 {
+    Console.Write("[");
     for (int i = 0; i < array.Length; i++)
     {
-        if (i == 0) Console.Write($"[{array[i]}, ");
-        else if (i == (array.Length - 1)) Console.Write($"{array[i]}]");
-        else Console.Write($"{array[i]}, ");
+        if (i != (array.Length - 1)) Console.Write($"{array[i]}, ");
+        else Console.Write($"{array[i]}]");
     }
 }
 
