@@ -64,7 +64,7 @@ int GetSize(string text)
 {
     Console.WriteLine(text);
     string size = Console.ReadLine();
-    while (String.IsNullOrEmpty(size) || int.Parse(size) == 0) { Console.WriteLine(text); size = Console.ReadLine(); }
+    while (int.TryParse(size, out _) == false || String.IsNullOrEmpty(size) || int.Parse(size) == 0) { Console.WriteLine(text); size = Console.ReadLine(); }
     return int.Parse(size);
 }
 
